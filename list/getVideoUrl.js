@@ -23,7 +23,15 @@ module.exports=function (videoUrl) {
             let $ = cheerio.load(data, {decodeEntities: false});
             //获取到正确的视频中间件url
             let realUrl = $("#vedio iframe").attr("src");
-            notVideo=realUrl.match(/(?:vid=)(.+)(?:&)/)[1];
+            if(!realUrl){
+                reject({error:"不存在视频数据"})
+            }
+            var matchStr=realUrl.match(/(?:vid=)(.+)(?:&)/);
+            if(matchStr&&matchStr[1]){
+                notVideo=matchStr[1]
+            }else{
+                notVideo=null
+            }
 
             //console.log(28,data);
             //console.log(realUrl);
@@ -47,10 +55,14 @@ module.exports=function (videoUrl) {
             .then((data)=> {
                 //进行页面判断 如果视频不存在或者已经被删除 返回源地址
                 console.log("最终视频url",data);
-                if(!!~data.indexOf("404.mp4")){
-                    reject(notVideo)
+
+                if(!!~data.indexOf("404.mp4")||!data){
+                    reject({error:"不存在视频连接",url:data})
                 }
                 resolve(data)
+            })
+            .catch((err)=>{
+                reject({error:err})
             })
     })
 }

@@ -92,5 +92,8 @@ module.exports=function (url) {
                 let allData=d.getData();
                 resolve(allData);
             })
+            .catch((d)=>{
+                reject(d)
+            })
     })
 };

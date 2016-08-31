@@ -25,7 +25,7 @@ module.exports=function(app){
         d.run(next);
 
         process.on('unhandledRejection', function (err) {
-            console.log(err);
+            console.log(err.stack);
             res.send({error:"出错了!"});
         });
     });

@@ -16,7 +16,7 @@ module.exports = function (req, res) {
                 res.send({"playUrl": data})
             })
         .catch(
-            (url)=>{
-                res.send({error:"视频不存在",url})
+            (error)=>{
+                res.send(error)
         })
 }

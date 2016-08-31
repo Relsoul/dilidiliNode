@@ -66,7 +66,7 @@ function getTab(){
             let $ = cheerio.load(data, {decodeEntities: false});
             let d=new getWeekList($, ["#weekdiv1","#weekdiv2","#weekdiv3","#weekdiv4","#weekdiv5","#weekdiv6","#weekdiv7"]);
             resolve(d.getData());
-        }).catch((err)=>{console.error(err)});
+        }).catch((err)=>{reject(err)});
     });
 
 }
