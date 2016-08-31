@@ -21,7 +21,6 @@ module.exports=function (videoUrl) {
     return new Promise((resolve,reject)=>{
         rq.getRequest(videoUrl).then((data) => {
             let $ = cheerio.load(data, {decodeEntities: false});
-            console.log(24,data);
             //获取到正确的视频中间件url
             let realUrl = $("#vedio iframe").attr("src");
             notVideo=realUrl.match(/(?:vid=)(.+)(?:&)/)[1];
@@ -47,6 +46,7 @@ module.exports=function (videoUrl) {
             })
             .then((data)=> {
                 //进行页面判断 如果视频不存在或者已经被删除 返回源地址
+                console.log("最终视频url",data);
                 if(!!~data.indexOf("404.mp4")){
                     reject(notVideo)
                 }
