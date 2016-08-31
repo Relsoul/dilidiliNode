@@ -1,4 +1,5 @@
 # 安装
+node>5.x
 ```
 git clone https://github.com/Relsoul/dilidiliNode.git
 
