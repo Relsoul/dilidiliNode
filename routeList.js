@@ -30,6 +30,11 @@ module.exports=function(app){
         });
     });
 
+
+    app.get("/",function(req,res){
+        res.send("服务器正常,详情请访问项目目录<a href='https://github.com/Relsoul/dilidiliApp'>APP</a>||<a href='https://github.com/Relsoul/dilidiliNode'>服务端</a>")
+    });
+
     //跨域
     app.use(function(req,res,next){
         res.header("Access-Control-Allow-Origin", "*");
