@@ -21,10 +21,10 @@ module.exports=function (videoUrl) {
     return new Promise((resolve,reject)=>{
         rq.getRequest(videoUrl).then((data) => {
             let $ = cheerio.load(data, {decodeEntities: false});
+            console.log(24,data);
             //获取到正确的视频中间件url
             let realUrl = $("#vedio iframe").attr("src");
             notVideo=realUrl.match(/(?:vid=)(.+)(?:&)/)[1];
-
 
             //console.log(28,data);
             //console.log(realUrl);

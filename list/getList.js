@@ -82,7 +82,6 @@ module.exports=function (url) {
         rq.getRequest(url)
             .then((data)=>{
                 let $=cheerio.load(data, {decodeEntities: false});
-
                 //添加新api 去除\r\n\t
                 $.prototype.strfy=function () {
                     let old=this.text();
