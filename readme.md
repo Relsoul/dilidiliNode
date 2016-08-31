@@ -36,4 +36,6 @@ node app.js
     `/video/watch3/44513/`
 
 # 说明
+[demo](https://relsoul.applinzi.com/)
+
 此项目爬了[嘀哩嘀哩](http://www.dilidili.com/)的某些数据,如有问题..请不要来查我水表..
